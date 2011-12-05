@@ -15,7 +15,7 @@ start_link() ->
     
 add_handler(Handler, Args) ->
     error_logger:info_msg("Adding event handler with handler: ~p and arguments: ~p.~n", [Handler, Args]),
-    gen_event:add_handler(?SERVER, Handler, Args).
+    gen_event:add_sup_handler(?SERVER, Handler, Args).
     
 delete_handler(Handler, Args) ->
     gen_event:delete_handler(?SERVER, Handler, Args).
