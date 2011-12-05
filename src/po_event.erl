@@ -1,5 +1,7 @@
 -module(po_event).
 
+-include("message.hrl").
+
 -export([start_link/0,
          add_handler/2,
          delete_handler/2,
@@ -12,13 +14,14 @@ start_link() ->
     gen_event:start_link({local, ?SERVER}).
     
 add_handler(Handler, Args) ->
+    error_logger:info_msg("Adding event handler with handler: ~p and arguments: ~p.~n", [Handler, Args]),
     gen_event:add_handler(?SERVER, Handler, Args).
     
 delete_handler(Handler, Args) ->
     gen_event:delete_handler(?SERVER, Handler, Args).
     
-publish_ow(Message) ->
+publish_ow(#message{} = Message) ->
     gen_event:notify(?SERVER, {publish, Message}).
     
-publish_two(Message) ->
+publish_tw(#message{} = Message) ->
     gen_event:call(?SERVER, {publish, Message}).

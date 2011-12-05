@@ -2,9 +2,9 @@
 -record(filter, {name,
                  namespace,
                  value,
-                 join = and}).
+                 join}).
 
 %% Record for the message
 -record(message, {filters = [],
                   body,
-                  content-type}).
+                  content_type = "text/plain"}).
