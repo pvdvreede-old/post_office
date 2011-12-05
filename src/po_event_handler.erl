@@ -28,7 +28,7 @@ delete_handler() ->
     
 handle_event({publish, #message{} = Message}, {Sender, Filter}) ->
     case match_filter(Message#message.filters, Filter) of
-        match -> ok;
+        match -> gone_through;
         nomatch -> nomatch
     end.
     

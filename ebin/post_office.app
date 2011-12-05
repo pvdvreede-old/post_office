@@ -5,7 +5,9 @@
         po_app,
         po_sup,
         po_event,
-        po_event_handler
+        po_event_handler,
+        po_adapter_sup,
+        po_adapter_http
     ]},
     {registered, [po_sup]},
     {applications, [kernel, stdlib]},

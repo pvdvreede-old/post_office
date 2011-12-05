@@ -15,7 +15,8 @@ start_link() ->
     
 init([]) ->
     PostOffice = {po_event, {po_event, start_link, []}, permanent, 2000, worker, [po_event]},
-    Children=[PostOffice],
+    AdapterSup = {po_adapter_sup, {po_adapter_sup, start_link, []}, permanent, 2000, supervisor, [po_adapter_sup]},
+    Children=[PostOffice, AdapterSup],
     RestartStrategy = {one_for_one, 4, 3600},
     error_logger:info_msg("Starting head supervisor.~n"),
     {ok, {RestartStrategy, Children}}.
