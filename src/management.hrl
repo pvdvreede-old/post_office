@@ -2,4 +2,5 @@
 -record(sender, {name,
                  address,
                  type,
+                 filters = [],
                  options = []}).
