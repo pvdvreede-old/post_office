@@ -8,6 +8,7 @@ start(_StartType, _StartArgs) ->
     error_logger:info_msg("Starting Post Office application.~n"),
     case po_sup:start_link() of
         {ok, Pid} -> 
+            po_store:init(),
             {ok, Pid};
         Other -> 
             error_logger:error_msg("Could not start application because of ~p.~n", [Other]),

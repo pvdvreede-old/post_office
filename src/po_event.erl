@@ -11,6 +11,7 @@
 -define(SERVER, ?MODULE).
 
 start_link() ->
+    error_logger:info_msg("Starting post office event manager."),
     gen_event:start_link({local, ?SERVER}).
     
 add_handler(Handler, Args) ->

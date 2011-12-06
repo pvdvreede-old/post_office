@@ -3,4 +3,5 @@
                  address,
                  type,
                  filters = [],
-                 options = []}).
+                 options = [],
+                 enabled = false}).
